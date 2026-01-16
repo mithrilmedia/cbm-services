@@ -4,8 +4,12 @@ import { Guests } from './components/Guests';
 import { ClientLogos } from './components/ClientLogos';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
+import { CalendlyModal } from './components/CalendlyModal';
+import { CalendlyProvider, useCalendly } from './context/CalendlyContext';
 
-function App() {
+function AppContent() {
+  const { isOpen, closeCalendly } = useCalendly();
+
   return (
     <>
       <a href="#main-content" className="sr-only">
@@ -19,7 +23,16 @@ function App() {
         <CTA />
       </main>
       <Footer />
+      <CalendlyModal isOpen={isOpen} onClose={closeCalendly} />
     </>
+  );
+}
+
+function App() {
+  return (
+    <CalendlyProvider>
+      <AppContent />
+    </CalendlyProvider>
   );
 }
 

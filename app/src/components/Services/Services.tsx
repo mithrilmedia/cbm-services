@@ -1,6 +1,7 @@
 import { HiArrowRight } from 'react-icons/hi';
 import { VideoEmbed } from '../VideoEmbed';
 import { SocialVideoEmbed } from '../SocialVideoEmbed';
+import { useCalendly } from '../../context/CalendlyContext';
 import styles from './Services.module.css';
 
 interface VideoSample {
@@ -166,16 +167,15 @@ const services: Service[] = [
     tagline: 'Consistent Content, Zero Hassle',
     description: 'We produce, schedule, and publish engaging social content on your behalf. From short-form video to LinkedIn thought leadership, we keep your brand active and growing across all platforms.',
     perfectFor: [
-      { highlight: 'Busy Executives', subtext: 'Who lack time for social media' },
-      { highlight: 'Growing Brands', subtext: 'Wanting consistent presence' },
-      { highlight: 'Companies', subtext: 'Looking to repurpose existing content' },
-      { highlight: 'Thought Leaders', subtext: 'Building their personal brand' },
+      { highlight: 'Busy Executives', subtext: 'who lack time for social media' },
+      { highlight: 'Growing Brands', subtext: 'wanting consistent presence' },
+      { highlight: 'Companies', subtext: 'looking to repurpose existing content' },
+      { highlight: 'Thought Leaders', subtext: 'building their personal brand' },
     ],
     features: [
       'Content calendar planning',
       'Short-form video production',
       'Platform-native content creation',
-      'Community management',
       'Performance analytics',
       'Trend monitoring and optimization',
     ],
@@ -200,17 +200,18 @@ const services: Service[] = [
     tagline: 'Digital Products That Perform',
     description: 'From stunning websites to custom applications, we build digital products that convert. Modern technology, beautiful design, and performance that drives your business forward.',
     perfectFor: [
-      { highlight: 'Brands', subtext: 'Needing a modern web presence' },
-      { highlight: 'Companies', subtext: 'Requiring custom internal tools' },
-      { highlight: 'Startups', subtext: 'Looking for technical co-pilots' },
-      { highlight: 'Restaurants', subtext: 'Needing digital ordering solutions' },
+      { highlight: 'Brands', subtext: 'needing a modern web presence' },
+      { highlight: 'Companies', subtext: 'requiring custom internal tools' },
+      { highlight: 'Startups', subtext: 'looking for technical co-pilots' },
+      { highlight: 'Restaurants', subtext: 'needing mobile-first solutions' },
     ],
     features: [
       'Custom website design and development',
       'Web application development',
-      'E-commerce solutions',
-      'API integrations',
-      'Hosting and maintenance',
+      'Technical consulting',
+      'Process and workflow implementation',
+      'Third-party integrations',
+      'Hosting and management',
       'Analytics and optimization',
     ],
     startingPrice: '$10,000',
@@ -225,10 +226,10 @@ const services: Service[] = [
     tagline: 'Level Up Your Content Game',
     description: 'Not ready for full production? We coach your team to create professional content in-house. From equipment recommendations to content strategy, we help you build internal capabilities that scale.',
     perfectFor: [
-      { highlight: 'In-House Teams', subtext: 'With talent but lacking direction' },
-      { highlight: 'Marketing Depts', subtext: 'Building content capabilities' },
-      { highlight: 'Founders', subtext: 'Who want to create their own content' },
-      { highlight: 'Solo Creators', subtext: 'Looking to level up their craft' },
+      { highlight: 'In-House Teams', subtext: 'with talent but lacking direction or resources' },
+      { highlight: 'Marketing Depts', subtext: 'building and expandingcontent capabilities' },
+      { highlight: 'Founders', subtext: 'who want to create their own content' },
+      { highlight: 'Operators', subtext: 'looking to level up their craft' },
     ],
     features: [
       'Content strategy development',
@@ -246,12 +247,7 @@ const services: Service[] = [
 ];
 
 export function Services() {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const { openCalendly } = useCalendly();
 
   return (
     <section className={styles.services} aria-labelledby="services-heading">
@@ -297,7 +293,7 @@ export function Services() {
                 <span className={styles.priceNote}>{service.priceNote}</span>
               </div>
               
-              <button onClick={scrollToContact} className={styles.ctaButton}>
+              <button onClick={openCalendly} className={styles.ctaButton}>
                 <span>{service.ctaText}</span>
                 <HiArrowRight className={styles.ctaArrow} />
               </button>

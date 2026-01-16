@@ -1,136 +1,17 @@
 .footer {
-  padding: 80px 0 40px;
+  padding: 24px 0;
   background-color: var(--color-black);
-  border-top: 1px solid var(--color-gray-800);
+  border-top: 1px solid var(--color-gray-900);
 }
 
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
-}
-
-.top {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 60px;
-  margin-bottom: 60px;
-}
-
-.brand {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.logo {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--color-white);
-}
-
-.tagline {
-  font-size: 0.95rem;
-  color: var(--color-gray-400);
-  max-width: 250px;
-}
-
-.links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-
-.linkGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.linkGroup nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.linkTitle {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-gray-500);
-}
-
-.link {
-  font-size: 0.95rem;
-  color: var(--color-gray-300);
-  transition: color var(--transition-fast);
-}
-
-.link:hover {
-  color: var(--color-accent);
-}
-
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 32px;
-  border-top: 1px solid var(--color-gray-800);
+  text-align: center;
 }
 
 .copyright {
   font-size: 0.85rem;
   color: var(--color-gray-500);
-}
-
-.legal {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.legalLink {
-  font-size: 0.85rem;
-  color: var(--color-gray-500);
-  transition: color var(--transition-fast);
-}
-
-.legalLink:hover {
-  color: var(--color-accent);
-}
-
-.separator {
-  color: var(--color-gray-700);
-}
-
-@media (max-width: 900px) {
-  .top {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .links {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .links {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  }
-
-  .linkGroup:last-child {
-    grid-column: span 2;
-  }
-
-  .bottom {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
 }

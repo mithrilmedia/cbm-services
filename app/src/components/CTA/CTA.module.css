@@ -1,6 +1,7 @@
 .cta {
   padding: var(--section-padding) 0;
-  background-color: var(--color-accent);
+  background-color: var(--color-black);
+  border-top: 1px solid var(--color-gray-800);
 }
 
 .container {
@@ -10,122 +11,93 @@
 }
 
 .content {
-  text-align: center;
+  max-width: 700px;
 }
 
-.title {
-  color: var(--color-black);
+.eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
   margin-bottom: 16px;
 }
 
+.title {
+  color: var(--color-white);
+  margin-bottom: 24px;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
 .subtitle {
-  font-size: 1.25rem;
-  color: var(--color-gray-800);
-  max-width: 600px;
-  margin: 0 auto 48px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--color-gray-400);
+  margin-bottom: 48px;
 }
 
-.calendlyWrapper {
-  max-width: 600px;
-  margin: 0 auto 48px;
-}
-
-.calendlyPlaceholder {
-  background-color: var(--color-white);
-  padding: 48px;
-}
-
-.calendlyContent {
+.actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
-}
-
-.calendarIcon {
-  color: var(--color-accent);
-  background-color: var(--color-black);
-  width: 72px;
-  height: 72px;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
 }
 
-.calendlyTitle {
-  font-size: 1.5rem;
-  color: var(--color-black);
-  font-weight: 400;
-}
-
-.calendlyText {
-  font-size: 1rem;
-  color: var(--color-gray-600);
-  max-width: 400px;
-}
-
-.calendlyButton {
+.primaryButton {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-top: 16px;
-  padding: 20px 40px;
+  padding: 20px 32px;
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
-  background-color: var(--color-black);
-  color: var(--color-white);
-  transition: background-color var(--transition-fast);
-}
-
-.calendlyButton:hover {
-  background-color: var(--color-gray-900);
-  color: var(--color-white);
-}
-
-.contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.contactText {
-  font-size: 0.9rem;
-  color: var(--color-gray-700);
-}
-
-.email {
-  font-size: 1.1rem;
-  font-weight: 500;
+  background-color: var(--color-accent);
   color: var(--color-black);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), gap var(--transition-fast);
 }
 
-.email:hover {
-  color: var(--color-gray-800);
+.primaryButton:hover {
+  background-color: #e6b712;
+  gap: 16px;
+}
+
+.arrowIcon {
+  font-size: 1.1rem;
+  transition: transform var(--transition-fast);
+}
+
+.primaryButton:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 20px 32px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-white);
+  border: 1px solid var(--color-gray-700);
+  background-color: transparent;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.secondaryButton:hover {
+  border-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 @media (max-width: 600px) {
-  .calendlyPlaceholder {
-    padding: 32px 24px;
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .calendarIcon {
-    width: 56px;
-    height: 56px;
-  }
-
-  .calendarIcon svg {
-    width: 28px;
-    height: 28px;
-  }
-
-  .calendlyButton {
-    width: 100%;
+  .primaryButton,
+  .secondaryButton {
     justify-content: center;
+    text-align: center;
   }
 }

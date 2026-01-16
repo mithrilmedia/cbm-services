@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { HiArrowRight } from 'react-icons/hi';
+import { useCalendly } from '../../context/CalendlyContext';
 import styles from './Hero.module.css';
 
 const serviceLinks = [
@@ -19,6 +20,7 @@ export function Hero() {
   const placeholderRef = useRef<HTMLDivElement>(null);
   const navLinksRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
+  const { openCalendly } = useCalendly();
 
   useEffect(() => {
     // Get initial bar height
@@ -83,12 +85,6 @@ export function Hero() {
     }
   }, [activeSection]);
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -143,7 +139,7 @@ export function Hero() {
           </div>
 
           <div className={styles.actions}>
-            <button onClick={scrollToContact} className={styles.primaryButton}>
+            <button onClick={openCalendly} className={styles.primaryButton}>
               Schedule a Call
             </button>
             <a href="#virtual-production" className={styles.secondaryButton}>
@@ -188,7 +184,7 @@ export function Hero() {
         </div>
 
         <button 
-          onClick={scrollToContact}
+          onClick={openCalendly}
           className={`${styles.ctaButton} ${isSticky ? styles.visible : ''}`}
         >
           Schedule a Call
