@@ -139,16 +139,93 @@
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Full-bleed Service Links Bar */
+/* Full-bleed Service Links Bar - Fixed when sticky */
 .serviceLinksBar {
   position: relative;
-  z-index: 2;
+  z-index: 1000;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.serviceLinksBar.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Placeholder to prevent content jump when bar becomes fixed */
+.serviceLinksPlaceholder {
+  /* Height controlled by inline style */
+}
+
+/* Slide-in Logo */
+.logo {
+  padding: 0 24px;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--color-white);
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.logo.visible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.logo:hover {
+  color: var(--color-accent);
+}
+
+/* Slide-in CTA */
+.ctaButton {
+  padding: 16px 24px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  background-color: var(--color-accent);
+  color: var(--color-black);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.2s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.ctaButton.visible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.ctaButton:hover {
+  background-color: #e6b712;
+}
+
+/* Nav Links Container */
+.navLinks {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .serviceLink {
@@ -167,13 +244,22 @@
   transition: all var(--transition-fast);
 }
 
+.serviceLink:first-child {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .serviceLink:last-child {
-  border-right: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .serviceLink:hover {
   background-color: rgba(255, 255, 255, 0.08);
   color: var(--color-accent);
+}
+
+.serviceLink.active {
+  color: var(--color-accent);
+  background-color: rgba(255, 203, 20, 0.1);
 }
 
 .serviceLinkLabel {
@@ -192,58 +278,18 @@
   transform: translateX(0);
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .serviceLinksBar {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
   }
 
-  .serviceLink:nth-child(3) {
-    border-right: none;
+  .logo,
+  .ctaButton {
+    display: none;
   }
 
-  .serviceLink:nth-child(4),
-  .serviceLink:nth-child(5),
-  .serviceLink:nth-child(6) {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .serviceLink:nth-child(4),
-  .serviceLink:nth-child(5) {
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
-
-@media (max-width: 768px) {
-  .content {
-    padding-top: 80px;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-
-  .stats {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .statNumber {
-    font-size: 2rem;
-  }
-
-  .actions {
-    flex-direction: column;
-  }
-
-  .primaryButton,
-  .secondaryButton {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .serviceLinksBar {
-    grid-template-columns: repeat(2, 1fr);
+  .navLinks {
+    grid-template-columns: repeat(6, 1fr);
   }
 
   .serviceLink {
@@ -251,15 +297,171 @@
     font-size: 0.8rem;
   }
 
-  .serviceLink:nth-child(odd) {
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  .serviceLink:first-child {
+    border-left: none;
   }
 
-  .serviceLink:nth-child(even) {
+  .serviceLink:last-child {
     border-right: none;
   }
+}
 
-  .serviceLink:nth-child(n+3) {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+@media (max-width: 900px) {
+  /* Nav menu: horizontal scroll on tablet */
+  .navLinks {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .navLinks::-webkit-scrollbar {
+    display: none;
+  }
+
+  .serviceLink {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    border-top: none;
+    border-left: none;
+    white-space: nowrap;
+  }
+
+  .serviceLink:first-child {
+    border-left: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero restructure: video on top, content below */
+  .hero {
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .videoBackground {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: auto;
+  }
+
+  .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .videoOverlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+  }
+
+  .content {
+    padding: 32px 0 40px;
+    align-items: flex-start;
+  }
+
+  .tagline {
+    font-size: 0.75rem;
+    margin-bottom: 16px;
+  }
+
+  .title {
+    font-size: 2.25rem;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .stat {
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.7rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 16px 24px;
+  }
+
+  /* Nav menu: horizontal scroll */
+  .serviceLinksBar {
+    overflow: visible;
+  }
+
+  .navLinks {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navLinks::-webkit-scrollbar {
+    display: none;
+  }
+
+  .serviceLink {
+    flex: 0 0 auto;
+    padding: 16px 24px;
+    font-size: 0.8rem;
+    scroll-snap-align: start;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: none;
+    border-top: none;
+    white-space: nowrap;
+  }
+
+  .serviceLink:first-child {
+    padding-left: 20px;
+    border-left: none;
+  }
+
+  .serviceLink:last-child {
+    border-right: none;
+    padding-right: 20px;
+  }
+
+  .arrowIcon {
+    display: none;
   }
 }
