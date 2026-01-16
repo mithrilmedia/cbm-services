@@ -1,0 +1,60 @@
+We are creating a one-page website for Cali BBQ Media. It is a static site that we will use Vite + React, Modular CSS, and TypeScript.
+
+The website will be hosted on Firebase Hosting. 
+
+We are going to use a dark theme for the website. Our base color is 000000 and our accent color is FFCB14. Neutral white and grey are also fine. 
+
+The primary audience for this website will be decision makers in the restaurant/hospitality/technology sectors. 
+
+The primary goal of the website from the stakeholder perspective is to clearly explain the services we offer, provide baseline pricing for each, and give the user a way to contact us/schedule a call (we will use Calendly for this). 
+
+The website will be a single page that is scrollable. The navigation will be at the top of the page. The navigation will be a dropdown menu that will list the services we offer.
+
+The website will be responsive and will work on desktop, tablet, and mobile devices.
+
+The website will be SEO friendly and will be optimized for Google Search.
+
+The website will be accessible and will be compliant with WCAG 2.1 AA standards.
+
+Key things we want to highlight:
+- The shows we have produce or have produced in the past
+- The logos of the clients we have worked with
+- The volume of impressions/views/listens/etc. we have delivered to our clients
+- Clear CTA to schedule a call
+- Baseline pricing for each service
+
+We will use the following fonts:
+- Funnel Display Light for the headings
+- Average Sans Regular for the body text
+
+This website is a showcase, it needs to be remarkable and memorable. I have uploaded images to the seed-content folder that provide some specific regarding the copy/numbers/things we want to feature. 
+
+No gradients. No em-dashes in the copy. 
+
+For sections on the site, I want:
+- A hero section with a video background
+- Separate service sections for each service and details about that offering
+- A highlight section with the shows we produce/have produced in the past
+- A section with the logos of the clients we have worked with
+- A section with the volume of impressions/views/listens/etc. we have delivered to our clients
+- A clear CTA to schedule a call
+- A baseline pricing for each service
+
+Github repo: https://github.com/mithrilmedia/cbm-services.git
+Firebase project ID: cbm-services
+
+Section showcase content:
+Virtual:
+- https://youtu.be/DiNdMsMTgSs
+- https://youtu.be/PUmRTvLiq0c
+- https://youtu.be/Pwbxf3Xk8pE
+
+
+In Person: 
+- https://youtu.be/Vh58fL27sxE 
+- https://youtu.be/mzl7ciI8Glg
+- https://youtu.be/WRfDJipWX-E
+
+Sponsorship: 
+- https://youtu.be/aDfu9CJ-QY0 
+- https://youtu.be/WU-OR5zb7ms 

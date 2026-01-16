@@ -1,0 +1,131 @@
+.cta {
+  padding: var(--section-padding) 0;
+  background-color: var(--color-accent);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  color: var(--color-black);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--color-gray-800);
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+.calendlyWrapper {
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+.calendlyPlaceholder {
+  background-color: var(--color-white);
+  padding: 48px;
+}
+
+.calendlyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.calendarIcon {
+  color: var(--color-accent);
+  background-color: var(--color-black);
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.calendlyTitle {
+  font-size: 1.5rem;
+  color: var(--color-black);
+  font-weight: 400;
+}
+
+.calendlyText {
+  font-size: 1rem;
+  color: var(--color-gray-600);
+  max-width: 400px;
+}
+
+.calendlyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 20px 40px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  transition: background-color var(--transition-fast);
+}
+
+.calendlyButton:hover {
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactText {
+  font-size: 0.9rem;
+  color: var(--color-gray-700);
+}
+
+.email {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-black);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.email:hover {
+  color: var(--color-gray-800);
+}
+
+@media (max-width: 600px) {
+  .calendlyPlaceholder {
+    padding: 32px 24px;
+  }
+
+  .calendarIcon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .calendarIcon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .calendlyButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,104 @@
+.clients {
+  padding: var(--section-padding) 0;
+  background-color: var(--color-black);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  text-align: center;
+}
+
+.sectionTitle {
+  margin-bottom: 16px;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--color-gray-400);
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.logosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 100px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.logoItem:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.logoImage {
+  max-width: 160px;
+  max-height: 50px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.andMore {
+  font-size: 1rem;
+  color: var(--color-gray-500);
+  font-style: italic;
+  margin-bottom: 48px;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--color-gray-300);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tagline strong {
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .logosGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .logoItem {
+    padding: 16px;
+    min-height: 80px;
+  }
+
+  .logoImage {
+    max-width: 120px;
+    max-height: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logosGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .logoItem {
+    padding: 12px;
+    min-height: 60px;
+  }
+
+  .logoImage {
+    max-width: 100px;
+    max-height: 32px;
+  }
+}
