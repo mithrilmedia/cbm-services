@@ -1,50 +1,84 @@
 .clients {
-  padding: var(--section-padding) 0;
-  background-color: var(--color-black);
+  background-color: #0a0a0a;
+  color: var(--color-white);
+  overflow: hidden;
 }
 
-.container {
+.header {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--container-padding);
-  text-align: center;
+  padding: 80px var(--container-padding) 40px;
+  text-align: right;
+}
+
+.eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-gray-500);
+  margin-bottom: 12px;
 }
 
 .sectionTitle {
-  margin-bottom: 16px;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
 }
 
-.sectionSubtitle {
+.sectionSubtext {
   font-size: 1.1rem;
+  line-height: 1.7;
   color: var(--color-gray-400);
-  max-width: 700px;
-  margin: 0 auto 60px;
+  max-width: 680px;
+  margin-top: 16px;
+  margin-left: auto;
 }
 
-.logosGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 60px;
+/* Infinite Scroll - Opposite Direction */
+.scrollWrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.scrollTrack {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  width: max-content;
+  animation: scrollReverse 40s linear infinite;
+}
+
+.scrollTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollReverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .logoItem {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  min-height: 100px;
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  padding: 20px 40px;
+  transition: opacity 0.3s ease;
 }
 
 .logoItem:hover {
-  transform: scale(1.05);
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .logoImage {
-  max-width: 160px;
-  max-height: 50px;
+  max-width: 140px;
+  max-height: 48px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -52,32 +86,20 @@
 }
 
 .andMore {
-  font-size: 1rem;
-  color: var(--color-gray-500);
-  font-style: italic;
-  margin-bottom: 48px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-gray-600);
+  padding: 24px 0 80px;
+  letter-spacing: 0.1em;
 }
 
-.tagline {
-  font-size: 1.1rem;
-  color: var(--color-gray-300);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.tagline strong {
-  color: var(--color-accent);
-}
-
-@media (max-width: 900px) {
-  .logosGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+@media (max-width: 1000px) {
+  .scrollTrack {
+    gap: 60px;
   }
 
   .logoItem {
-    padding: 16px;
-    min-height: 80px;
+    padding: 16px 32px;
   }
 
   .logoImage {
@@ -87,18 +109,24 @@
 }
 
 @media (max-width: 600px) {
-  .logosGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+  .header {
+    padding: 60px var(--container-padding) 32px;
+  }
+
+  .scrollTrack {
+    gap: 40px;
   }
 
   .logoItem {
-    padding: 12px;
-    min-height: 60px;
+    padding: 12px 24px;
   }
 
   .logoImage {
     max-width: 100px;
     max-height: 32px;
+  }
+
+  .andMore {
+    padding: 20px 0 60px;
   }
 }

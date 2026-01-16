@@ -3,58 +3,58 @@ import styles from './Guests.module.css';
 interface Guest {
   name: string;
   title: string;
-  company: string;
   image: string;
 }
 
 const guests: Guest[] = [
-  { name: 'Emeril Lagasse', title: 'Celebrity Restaurateur', company: '', image: '/guests/emeril-lagasse.png' },
-  { name: 'Jon Taffer', title: 'Host', company: 'Bar Rescue', image: '/guests/jon-taffer.png' },
-  { name: 'Shaquille O\'Neal', title: 'NBA Superstar', company: '', image: '/guests/shaq.png' },
-  { name: 'Rob Dyrdek', title: 'Media & Sports Entrepreneur', company: '', image: '/guests/rob-dyrdek.png' },
-  { name: 'Giada De Laurentiis', title: 'Food Network Star', company: '', image: '/guests/giada.jpg' },
-  { name: 'Aman Narang', title: 'CEO', company: 'Toast, Inc.', image: '/guests/aman-narang.png' },
-  { name: 'David Meltzer', title: 'Entrepreneur & Business Coach', company: '', image: '/guests/david-meltzer.png' },
-  { name: 'Sam the Cooking Guy', title: 'Celebrity Chef', company: '', image: '/guests/sam-the-cooking-guy.png' },
-  { name: 'Dave Williamson', title: 'Comedian & Entrepreneur', company: '', image: '/guests/dave-williamson.png' },
-  { name: 'Robyn Lindars', title: 'Chef & Entrepreneur', company: '', image: '/guests/robyn-lindars.png' },
-  { name: 'Tabitha Lipkin', title: 'Media Personality', company: '', image: '/guests/tabitha-lipkin.png' },
-  { name: 'Juliet Hahn', title: 'CCO & Podcast Host', company: '', image: '/guests/juliet-hahn.png' },
-  { name: 'Pinky Cole', title: 'Founder', company: 'Slutty Vegan', image: '/guests/pinky-cole.png' },
-  { name: 'Marc Murphy', title: 'Celebrity Chef', company: '', image: '/guests/marc-murphy.png' },
-  { name: 'Meredith Sandland', title: 'Author & Executive', company: '', image: '/guests/meredith-sandland.png' },
-  { name: 'Brett Berish', title: 'CEO', company: 'Sovereign Brands', image: '/guests/brett-berish.png' },
-  { name: 'Sohla El-Waylly', title: 'Chef & TV Personality', company: '', image: '/guests/sohla.png' },
+  { name: 'Alison Roman', title: 'Author & Chef', image: '/guests/alison-roman.webp' },
+  { name: 'Aman Narang', title: 'CEO, Toast', image: '/guests/aman-narang.avif' },
+  { name: 'Brett Berish', title: 'CEO, Sovereign Brands', image: '/guests/brett-berish.webp' },
+  { name: 'David Meltzer', title: 'Entrepreneur', image: '/guests/david-meltzer.jpeg' },
+  { name: 'Debby Soo', title: 'CEO, OpenTable', image: '/guests/debby-soo.webp' },
+  { name: 'Emeril Lagasse', title: 'Celebrity Chef', image: '/guests/emeril.jpg' },
+  { name: 'Giada De Laurentiis', title: 'Food Network Star', image: '/guests/giada.webp' },
+  { name: 'Jim Trotter', title: 'Sports Journalist', image: '/guests/jim-trotter.jpg' },
+  { name: 'Jon Taffer', title: 'Host, Bar Rescue', image: '/guests/jon-taffer.webp' },
+  { name: 'Marc Murphy', title: 'Celebrity Chef', image: '/guests/marc-murphy.jpeg' },
+  { name: 'Mayim Bialik', title: 'Actress & Author', image: '/guests/mayim-bialik.jpg' },
+  { name: 'Pinky Cole', title: 'Founder, Slutty Vegan', image: '/guests/pinky-cole.jpg' },
+  { name: 'Rob Dyrdek', title: 'Media Entrepreneur', image: '/guests/rob-dyrdek.jpg' },
+  { name: 'Sam the Cooking Guy', title: 'Celebrity Chef', image: '/guests/sam-the-cooking-guy.webp' },
+  { name: 'Shaquille O\'Neal', title: 'NBA Legend', image: '/guests/shaq.avif' },
+  { name: 'Sohla El-Waylly', title: 'Chef & TV Personality', image: '/guests/sohla.png' },
+  { name: 'Von Miller', title: 'NFL Superstar', image: '/guests/von-miller.jpg' },
 ];
 
 export function Guests() {
+  // Duplicate guests for seamless infinite scroll
+  const duplicatedGuests = [...guests, ...guests];
+
   return (
     <section className={styles.guests} aria-labelledby="guests-heading">
-      <div className={styles.container}>
+      <div className={styles.header}>
+        <span className={styles.eyebrow}>Featured Guests</span>
         <h2 id="guests-heading" className={styles.sectionTitle}>
-          Guests We've Featured
+          We've Hosted the Best
         </h2>
-        <p className={styles.sectionSubtitle}>
-          We've had the privilege of featuring some of the most influential names in hospitality, entertainment, and business.
+        <p className={styles.sectionSubtext}>
+          From celebrity chefs and Food Network stars to NFL legends, NBA icons, tech CEOs, and media entrepreneurs. Our shows bring together the most influential voices across hospitality, technology, and business.
         </p>
+      </div>
 
-        <div className={styles.guestsGrid}>
-          {guests.map((guest) => (
-            <div key={guest.name} className={styles.guestCard}>
-              <div className={styles.avatarWrapper}>
-                <img 
-                  src={guest.image} 
-                  alt={guest.name}
-                  className={styles.avatar}
-                  loading="lazy"
-                />
-              </div>
-              <div className={styles.guestInfo}>
-                <h3 className={styles.guestName}>{guest.name}</h3>
-                <p className={styles.guestTitle}>{guest.title}</p>
-                {guest.company && (
-                  <p className={styles.guestCompany}>{guest.company}</p>
-                )}
+      <div className={styles.scrollWrapper}>
+        <div className={styles.scrollTrack}>
+          {duplicatedGuests.map((guest, index) => (
+            <div key={`${guest.name}-${index}`} className={styles.tile}>
+              <img 
+                src={guest.image} 
+                alt={guest.name}
+                className={styles.tileImage}
+                loading="lazy"
+              />
+              <div className={styles.tileOverlay}>
+                <span className={styles.tileName}>{guest.name}</span>
+                <span className={styles.tileTitle}>{guest.title}</span>
               </div>
             </div>
           ))}

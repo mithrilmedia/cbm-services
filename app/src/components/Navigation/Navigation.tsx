@@ -2,18 +2,17 @@ import { useState, useEffect } from 'react';
 import styles from './Navigation.module.css';
 
 const services = [
-  { id: 'virtual-production', label: 'Virtual Production' },
-  { id: 'in-person-production', label: 'In-Person Production' },
-  { id: 'sponsorship', label: 'Sponsorship' },
-  { id: 'creative-consulting', label: 'Creative Consulting' },
-  { id: 'social-media', label: 'Social Media Management' },
-  { id: 'development', label: 'Website & Software' },
+  { id: 'virtual-production', label: 'Virtual' },
+  { id: 'in-person-production', label: 'In Person' },
+  { id: 'sponsorship', label: 'Sponsor' },
+  { id: 'social-media', label: 'Social' },
+  { id: 'development', label: 'Web' },
+  { id: 'creative-consulting', label: 'Consulting' },
 ];
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +27,6 @@ export function Navigation() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
-      setIsServicesOpen(false);
     }
   };
 
@@ -50,42 +48,15 @@ export function Navigation() {
         </button>
 
         <div id="main-menu" className={`${styles.menu} ${isMenuOpen ? styles.open : ''}`}>
-          <div className={styles.servicesDropdown}>
+          {services.map((service) => (
             <button
-              className={styles.servicesButton}
-              onClick={() => setIsServicesOpen(!isServicesOpen)}
-              aria-expanded={isServicesOpen}
-              aria-haspopup="true"
+              key={service.id}
+              onClick={() => scrollToSection(service.id)}
+              className={styles.navLink}
             >
-              Services
-              <svg className={`${styles.chevron} ${isServicesOpen ? styles.open : ''}`} width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              {service.label}
             </button>
-            <ul className={`${styles.dropdown} ${isServicesOpen ? styles.open : ''}`} role="menu">
-              {services.map((service) => (
-                <li key={service.id} role="none">
-                  <button
-                    role="menuitem"
-                    onClick={() => scrollToSection(service.id)}
-                    className={styles.dropdownItem}
-                  >
-                    {service.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <button onClick={() => scrollToSection('shows')} className={styles.navLink}>
-            Shows
-          </button>
-          <button onClick={() => scrollToSection('clients')} className={styles.navLink}>
-            Clients
-          </button>
-          <button onClick={() => scrollToSection('pricing')} className={styles.navLink}>
-            Pricing
-          </button>
+          ))}
           <button onClick={() => scrollToSection('contact')} className={styles.ctaButton}>
             Schedule a Call
           </button>

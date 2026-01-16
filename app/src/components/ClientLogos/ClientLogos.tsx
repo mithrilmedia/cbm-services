@@ -15,22 +15,35 @@ const clients: Client[] = [
   { name: 'Walmart Business', logo: '/logos/walmart-business.svg' },
   { name: 'US Foods', logo: '/logos/us-foods.svg' },
   { name: 'Ring', logo: '/logos/ring-2.svg' },
+  { name: 'Amazon Business', logo: '/logos/amazon-business.png' },
+  { name: 'DAVO', logo: '/logos/davo.png' },
+  { name: 'Eero', logo: '/logos/eero.png' },
+  { name: 'Incentivio', logo: '/logos/incentivio.png' },
+  { name: 'inKind', logo: '/logos/inkind-logo.png' },
+  { name: 'Ovation', logo: '/logos/ovation.png' },
+  { name: 'Palona', logo: '/logos/palona.png' },
 ];
 
 export function ClientLogos() {
+  // Duplicate for seamless infinite scroll
+  const duplicatedClients = [...clients, ...clients];
+
   return (
     <section id="clients" className={styles.clients} aria-labelledby="clients-heading">
-      <div className={styles.container}>
+      <div className={styles.header}>
+        <span className={styles.eyebrow}>Our Partners</span>
         <h2 id="clients-heading" className={styles.sectionTitle}>
-          Brands Who Trust Us
+          We've Worked With The Best
         </h2>
-        <p className={styles.sectionSubtitle}>
-          These are just a few of the brands that have trusted us to create B2B content and help connect their brands with the decision-makers that matter.
+        <p className={styles.sectionSubtext}>
+          Industry leaders trust us to create B2B content that connects their brands with the decision-makers that matter.
         </p>
+      </div>
 
-        <div className={styles.logosGrid}>
-          {clients.map((client) => (
-            <div key={client.name} className={styles.logoItem}>
+      <div className={styles.scrollWrapper}>
+        <div className={styles.scrollTrack}>
+          {duplicatedClients.map((client, index) => (
+            <div key={`${client.name}-${index}`} className={styles.logoItem}>
               <img 
                 src={client.logo} 
                 alt={client.name}
@@ -40,13 +53,6 @@ export function ClientLogos() {
             </div>
           ))}
         </div>
-
-        <p className={styles.andMore}>and many more</p>
-
-        <p className={styles.tagline}>
-          We have helped these brands amplify their messaging through{' '}
-          <strong>powerful stories that drive more business</strong> and position their brand in front of the right audience.
-        </p>
       </div>
     </section>
   );
